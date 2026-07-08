@@ -200,7 +200,8 @@ spec:
               echo "DB is ready!"
       containers:
         - name: backend
-          image: ghcr.io/iam-veeramalla/Jerney/jerney-backend:75da1da
+          image: sumedh999/jerney-backend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
               protocol: TCP
@@ -307,7 +308,8 @@ spec:
           effect: "NoSchedule"
       containers:
         - name: frontend
-          image: ghcr.io/iam-veeramalla/Jerney/jerney-frontend:75da1da
+          image: sumedh999/jerney-frontend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -342,7 +344,7 @@ spec:
 ---
 # ---- Frontend Service (NodePort — for access via port-forward or node IP) ----
 # NOTE: Changed from LoadBalancer because this AWS account does not support
-# creating load balancers. Use `kubectl port-forward svc/jerney-frontend 8080:80 -n jerney`
+# creating load balancers. Use `kubectl port-forward svc/jerney-frontend 8081:80 -n jerney`
 # to access the frontend locally.
 apiVersion: v1
 kind: Service
